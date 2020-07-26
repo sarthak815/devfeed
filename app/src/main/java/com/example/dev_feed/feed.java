@@ -18,23 +18,12 @@ import com.google.firebase.auth.FirebaseUser;
 public class feed extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
-    Button logout;
-
-    TextView profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed);
-        //profile = (TextView)findViewById(R.id.username_profile);
-        //logout = (Button)findViewById(R.id.logout);
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                firebaseAuth.signOut();
-//                checkUserStatus();
-//            }
-//        });
+
         firebaseAuth = FirebaseAuth.getInstance();
 
 
@@ -85,7 +74,6 @@ public class feed extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         if(user != null){
-            //profile.setText(user.getEmail());
 
         }
 
