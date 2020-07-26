@@ -42,6 +42,7 @@
             android:layout_weight="1">
 
             <EditText
+                android:id="@+id/username_login"
                 android:layout_width="330dp"
                 android:layout_height="53dp"
                 android:layout_gravity="center"
@@ -58,6 +59,8 @@
             android:layout_weight="1">
 
             <EditText
+                android:inputType="textWebPassword"
+                android:id="@+id/password_login"
                 android:layout_width="330dp"
                 android:layout_height="53dp"
                 android:layout_gravity="center"
@@ -75,6 +78,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/login"
                 android:layout_width="200dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -103,11 +107,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5">
-                <Button
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/google_login"
                     android:layout_width="200dp"
                     android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:text="Google Login"/>
+                    android:layout_gravity="center" />
             </LinearLayout>
 
         </LinearLayout>
