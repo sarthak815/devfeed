@@ -308,7 +308,7 @@ public class ProfileFragment extends Fragment {
             case CAMERA_REQUEST_CODE:{
                 if(grantResults.length>0){
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean writeStorageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean writeStorageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
                     if(cameraAccepted && writeStorageAccepted){
                         pickFromCamera();
                     }

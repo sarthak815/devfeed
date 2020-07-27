@@ -8,8 +8,12 @@
         android:title="Search"
         android:iconTint="#FFFFFF"
         android:icon="@drawable/search"/>
+    <item android:title="Post"
+        android:id="@+id/post_menu"
+        android:icon="@drawable/post"/>
     <item android:title="Profile"
         android:id="@+id/profile_menu"
         android:iconTint="#FFFFFF"
         android:icon="@drawable/person"/>
+
 </menu>

@@ -25,6 +25,7 @@ public class feed extends AppCompatActivity {
         setContentView(R.layout.feed);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        checkUserStatus();
 
 
         BottomNavigationView navigationView = findViewById(R.id.navigation);
@@ -63,6 +64,12 @@ public class feed extends AppCompatActivity {
                         ft3.replace(R.id.container, fragment3, "");
                         ft3.commit();
                         return true;
+                    case R.id.post_menu:
+                        PostFragment fragment4 = new PostFragment();
+                        FragmentTransaction ft4 = getSupportFragmentManager().beginTransaction();
+                        ft4.replace(R.id.container, fragment4, "");
+                        ft4.commit();
+                        return true;
                 }
                 return false;
             }
@@ -75,6 +82,7 @@ public class feed extends AppCompatActivity {
 
         if(user != null){
 
+
         }
 
         else{
@@ -84,7 +92,7 @@ public class feed extends AppCompatActivity {
     }
 
     protected void OnStart(){
-        checkUserStatus();
         super.onStart();
+        checkUserStatus();
     }
 }
