@@ -17,10 +17,13 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,19 +39,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.security.Key;
 import java.util.HashMap;
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -61,7 +63,7 @@ public class ProfileFragment extends Fragment {
     FloatingActionButton fab;
     FirebaseDatabase firebaseDatabase;
 
-    StorageReference storageReference, storageReference2nd;
+    StorageReference storageReference;
     String storagePath = "Users_Profile_Cover_Imgs/";
     ImageView avatartv;
     TextView nametv, emailtv, phonetv, plusonetv;
@@ -104,6 +106,7 @@ public class ProfileFragment extends Fragment {
         user = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Users");
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -114,7 +117,7 @@ public class ProfileFragment extends Fragment {
         plusonetv = view.findViewById(R.id.plus_one);
         fab = view.findViewById(R.id.fab);
 
-        pd = new ProgressDialog(getActivity())
+        pd = new ProgressDialog(getActivity());
         Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -166,8 +169,8 @@ public class ProfileFragment extends Fragment {
         return  result;
     }
 
-    private Boolean requestStoragePermission(){
-        ActivityCompat.requestPermissions(getActivity(), storagePermissions, STORAGE_REQUEST_CODE);
+    private void requestStoragePermission(){
+        requestPermissions(storagePermissions, STORAGE_REQUEST_CODE);
     }
 
     private Boolean checkCameraPermission(){
@@ -181,12 +184,12 @@ public class ProfileFragment extends Fragment {
         return  result && result1;
     }
 
-    private Boolean requestCameraPermission(){
-        ActivityCompat.requestPermissions(getActivity(), cameraPermissions, CAMERA_REQUEST_CODE);
+    private void requestCameraPermission(){
+        requestPermissions(cameraPermissions, CAMERA_REQUEST_CODE);
     }
 
     private void showEditProfileDialog() {
-        String options[] = ["Edit Profile Picture", "Edit Name", "Edit Phone"];
+        String options[] = {"Edit Profile Picture", "Edit Name", "Edit Phone"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -196,25 +199,77 @@ public class ProfileFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0){
                     pd.setMessage("Updating Profile Picture");
-                    profileOrCoverPhoto= "image"
+                    profileOrCoverPhoto= "image";
                     showImagePicDialog();
 
                 }
                 else if(which ==1){
                     pd.setMessage("Updating Name");
+                    showNamePhoneUpdateDialog("name");
 
                 }
                 else if(which ==2){
                     pd.setMessage("Phone Number");
-
+                    showNamePhoneUpdateDialog("phone");
                 }
             }
         });
         builder.create().show();
     }
 
+    private void showNamePhoneUpdateDialog(final String key) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Update "+ key);
+        LinearLayout linearLayout = new LinearLayout(getActivity());
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setPadding(10, 10, 10, 10);
+
+        final EditText editText = new EditText(getActivity());
+        editText.setHint("Enter "+key);
+        linearLayout.addView(editText);
+
+        builder.setView(linearLayout);
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String value = editText.getText().toString().trim();
+                if(!TextUtils.isEmpty(value)){
+                    pd.show();
+                    HashMap<String, Object> result = new HashMap<>();
+                    result.put(key,value);
+                    databaseReference.child(user.getUid()).updateChildren(result)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    pd.dismiss();
+                                    Toast.makeText(getActivity(), "Updated...", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    pd.dismiss();
+                                    Toast.makeText(getActivity(), ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+
+    }
+
     private void showImagePicDialog() {
-        String options[] = ["Camera", "Gallery"];
+        String options[] = {"Camera", "Gallery"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -263,6 +318,7 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             }
+            break;
             case STORAGE_REQUEST_CODE:{
                 if(grantResults.length>0){
                     boolean writeStorageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
@@ -275,12 +331,9 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             }
+            break;
         }
 
-
-
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 
@@ -288,12 +341,11 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(resultCode == RESULT_OK){
             if(requestCode == IMAGE_PICK_GALLERY_CODE){
-                image_uri = data.getData();
+                image_uri = Objects.requireNonNull(data).getData();
 
                 uploadProfileCoverPhoto(image_uri);
             }
             if(requestCode == IMAGE_PICK_CAMERA_CODE){
-                image_uri = data.getData();
 
                 uploadProfileCoverPhoto(image_uri);
             }
@@ -334,7 +386,9 @@ public class ProfileFragment extends Fragment {
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
+                                            pd.dismiss();
                                             Toast.makeText(getActivity(), "Error Updating Image...", Toast.LENGTH_SHORT).show();
+
 
                                         }
                                     });
@@ -348,9 +402,10 @@ public class ProfileFragment extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        pd.dismiss();
                         Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                })
+                });
     }
 
     private void pickFromCamera() {
@@ -364,7 +419,7 @@ public class ProfileFragment extends Fragment {
 
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
-        startActivity(cameraIntent, IMAGE_PICK_CAMERA_CODE);
+        startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
     }
 
     private void pickFromGallery(){
