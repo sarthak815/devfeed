@@ -22,12 +22,12 @@
         <TextView
             android:id="@+id/devfeed"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="155dp"
             android:layout_weight="1"
-            android:textSize="96sp"
-            android:text="DevFeed"
             android:fontFamily="@font/dreamwood"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="DevFeed"
+            android:textSize="96sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,13 +44,14 @@
             <EditText
                 android:id="@+id/username_login"
                 android:layout_width="330dp"
-                android:layout_height="53dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#00203F"
-                android:textSize="36sp"
+                android:background="@drawable/text_border"
                 android:hint="Username"
+                android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
-                android:textColor="#FFFFFF" />
+                android:textSize="36sp"
+                android:paddingLeft="5dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,8 +65,9 @@
                 android:layout_width="330dp"
                 android:layout_height="53dp"
                 android:layout_gravity="center"
-                android:background="#00203F"
+                android:background="@drawable/text_border"
                 android:textSize="36sp"
+                android:paddingLeft="5dp"
                 android:hint="Password"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF" />
@@ -79,10 +81,15 @@
 
             <Button
                 android:id="@+id/login"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:text="Login"/>
+                android:text="Login"
+                android:background="@drawable/button_border"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:textSize="24dp"
+                />
         </LinearLayout>
 
         <LinearLayout
