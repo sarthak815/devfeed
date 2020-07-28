@@ -44,13 +44,13 @@
             <EditText
                 android:id="@+id/username_login"
                 android:layout_width="330dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:background="@drawable/text_border"
                 android:hint="Username"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
-                android:textSize="36sp"
+                android:textSize="20sp"
                 android:paddingLeft="5dp"/>
         </LinearLayout>
         <LinearLayout
@@ -63,10 +63,10 @@
                 android:inputType="textWebPassword"
                 android:id="@+id/password_login"
                 android:layout_width="330dp"
-                android:layout_height="53dp"
+                android:textSize="20sp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:background="@drawable/text_border"
-                android:textSize="36sp"
                 android:paddingLeft="5dp"
                 android:hint="Password"
                 android:textColorHint="#FFFFFF"
@@ -103,12 +103,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5">
-            <Button
-                android:id="@+id/register_1"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:text="Register"/>
+                <Button
+                    android:id="@+id/register_1"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:text="Register"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -122,7 +122,6 @@
             </LinearLayout>
 
         </LinearLayout>
-        </LinearLayout>
-
     </LinearLayout>
 
+</LinearLayout>

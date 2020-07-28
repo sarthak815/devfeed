@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,107 +11,160 @@
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ADEFD1"
-        android:orientation="vertical">
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#A600203F">
-        <TextView
-            android:text="DevFeed"
-            android:fontFamily="@font/dreamwood"
-            android:paddingTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:textAppearance="@style/devfeed_title"
-            android:gravity="center_horizontal|bottom"
-            />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_marginTop="100dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#A600203F">
-
-        </RelativeLayout>
-        <LinearLayout
-            android:id="@+id/linear_layout"
-            android:layout_marginTop="100dp"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal"
-            android:background="#ADEFD1">
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/profile_pic"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                tools:src="@tools:sample/avatars"
-                app:civ_border="true"
-                app:civ_border_color="@color/dark"
-                app:civ_border_width="5dp"
-                app:civ_shadow="true"
-                app:civ_shadow_radius="3dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="5"
-                android:orientation="vertical">
-                <androidx.slidingpanelayout.widget.SlidingPaneLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    />
-                <TextView
-                    android:textSize="25sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:id="@+id/name_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:textAllCaps="false"
-                    android:text="PlusUps"
-                    android:textStyle="bold"
-                    >
-                <TextView
-                    android:id="@+id/email"
-                    android:gravity="center"
-                    android:textSize="28sp"
-                    android:textColor="#000000"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="+6969"
-                    />
-                <androidx.slidingpanelayout.widget.SlidingPaneLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"/>
-                <Button
-                    android:id="@+id/contact_number"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_width="180dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5"
-                    android:background="@drawable/button_border"
-                    android:text="Contact"/>
-            </LinearLayout>
-        </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mypost_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/linear_layout"/>
-    </RelativeLayout>
+            android:background="#ADEFD1"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#A600203F">
+                <TextView
+                    android:text="DevFeed"
+                    android:fontFamily="@font/dreamwood"
+                    android:paddingTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:textAppearance="@style/devfeed_title"
+                    android:gravity="center_horizontal|bottom"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginTop="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#A600203F">
+
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_marginTop="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:orientation="horizontal"
+                android:background="#ADEFD1">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    tools:src="@tools:sample/avatars"
+                    app:civ_border="true"
+                    app:civ_border_color="@color/dark"
+                    app:civ_border_width="5dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="3dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="25sp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+                    <androidx.slidingpanelayout.widget.SlidingPaneLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
+                    <TextView
+
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_width="180dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"
+                        android:text="Contact"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/linear_layout"
+                android:id="@+id/user_description"
+                android:weightSum="0.8"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/name_profile"
+                    android:layout_weight="0.3"
+                    android:text="Your Name"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/email"
+                    android:text="email"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:gravity="left"
+                    android:layout_weight="0.2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingLeft="3dp"
+
+                    />
+                <TextView
+                    android:id="@+id/contact_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="+91941234567"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:gravity="left"
+                    android:layout_weight="0.1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingLeft="3dp"
+                    />
+                <TextView
+                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="@color/dark"
+                    android:textColor="@color/white"
+                    android:text="Projects"
+                    android:gravity="center"
+                    android:textSize="32sp"
+                    android:textAllCaps="true"
+                    />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mypost_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/user_description"/>
+        </RelativeLayout>
 
     </ScrollView>
 

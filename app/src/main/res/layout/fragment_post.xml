@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
                 android:id="@+id/title_post"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="No Picture to Post"
+                android:text="Title"
                 android:textColorHint="@color/dark"
                 android:textColor="@color/dark"
                 android:textSize="25sp"/>
@@ -39,10 +40,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/dark"
+                android:src="@drawable/comment"
                 android:minHeight="200dp" />
-            <androidx.slidingpanelayout.widget.SlidingPaneLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp"/>
+                android:layout_height="20dp"/>
 
             <EditText
                 android:id="@+id/description_post"
@@ -55,15 +57,15 @@
                 android:background="@drawable/description_layout"
                 android:textColorHint="@color/dark"
                 android:textSize="20sp"/>
-            <androidx.slidingpanelayout.widget.SlidingPaneLayout
-                android:layout_width="match_parent"
-                android:layout_height="24dp"/>
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <androidx.slidingpanelayout.widget.SlidingPaneLayout
+                <View
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"/>
 
@@ -81,9 +83,8 @@
                     />
             </LinearLayout>
 
-
-
         </LinearLayout>
     </ScrollView>
 
 </FrameLayout>
+
