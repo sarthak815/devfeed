@@ -2,12 +2,12 @@ package com.example.dev_feed;
 
 public class model_post {
 
-    String pId, pTitle, pDescr, pImage, pTime, uid, uEmail, uDp, uName, pLikes;
+    String pId, pTitle, pDescr, pImage, pTime, uid, uEmail, uDp, uName, pLikes, pComments;
 
     public model_post() {
     }
 
-    public model_post(String pId, String pTitle, String pDescr, String pImage, String pTime, String uid, String uEmail, String uDp, String uName, String pLikes) {
+    public model_post(String pId, String pTitle, String pDescr, String pImage, String pTime, String uid, String uEmail, String uDp, String uName, String pLikes, String pComments) {
         this.pId = pId;
         this.pTitle = pTitle;
         this.pDescr = pDescr;
@@ -18,6 +18,7 @@ public class model_post {
         this.uDp = uDp;
         this.uName = uName;
         this.pLikes = pLikes;
+        this.pComments = pComments;
     }
 
     public String getpId() {
@@ -98,5 +99,13 @@ public class model_post {
 
     public void setpLikes(String pLikes) {
         this.pLikes = pLikes;
+    }
+
+    public String getpComments() {
+        return pComments;
+    }
+
+    public void setpComments(String pComments) {
+        this.pComments = pComments;
     }
 }

@@ -125,7 +125,6 @@ public class ProfileFragment extends Fragment {
         nametv = view.findViewById(R.id.name_profile);
         emailtv = view.findViewById(R.id.email);
         phonetv = view.findViewById(R.id.contact_number);
-        plusonetv = view.findViewById(R.id.plus_one);
         fab = view.findViewById(R.id.fab);
         postsRecyclerView = view.findViewById(R.id.mypost_recycler);
 
@@ -344,6 +343,39 @@ public class ProfileFragment extends Fragment {
 
                             }
                         });
+
+                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot ds: snapshot.getChildren()){
+                                    String child = ds.getKey();
+                                    if(snapshot.child(child).hasChild("Comments")){
+                                        String child1 = ""+snapshot.child(child).getKey();
+                                        Query child2 = FirebaseDatabase.getInstance().getReference("Posts").child(child).child("Comments").orderByChild("uid").equalTo(uid);
+                                        child2.addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for(DataSnapshot ds: snapshot.getChildren()){
+                                                    String child = ds.getKey();
+                                                    snapshot.getRef().child(child).child("uName").setValue(value);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                     }
                 }
                 else{
@@ -508,6 +540,41 @@ public class ProfileFragment extends Fragment {
 
                                     }
                                 });
+                                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for(DataSnapshot ds: snapshot.getChildren()){
+                                            String child = ds.getKey();
+                                            if(snapshot.child(child).hasChild("Comments")){
+                                                String child1 = ""+snapshot.child(child).getKey();
+                                                Query child2 = FirebaseDatabase.getInstance().getReference("Posts").child(child).child("Comments").orderByChild("uid").equalTo(uid);
+                                                child2.addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        for(DataSnapshot ds: snapshot.getChildren()){
+                                                            String child = ds.getKey();
+                                                            snapshot.getRef().child(child).child("uDp").setValue(downloadUri.toString());
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                    }
+                                                });
+
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+
                             }
                         }
                         else {

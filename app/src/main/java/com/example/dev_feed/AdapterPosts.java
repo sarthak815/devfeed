@@ -70,12 +70,13 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder>{
         String uEmail= postList.get(i).getuEmail();
         String uName = postList.get(i).getuName();
         String uDp = postList.get(i).getuDp();
-        String pId = postList.get(i).getpId();
+        final String pId = postList.get(i).getpId();
         String pTitle = postList.get(i).getpTitle();
         String pDescription = postList.get(i).getpDescr();
         String pImage = postList.get(i).getpImage();
         String pTimeStamp = postList.get(i).getpTime();
         String pLikes = postList.get(i).getpLikes();
+
 
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         calendar.setTimeInMillis(Long.parseLong(pTimeStamp));
@@ -147,7 +148,9 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder>{
         holder.commentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Comment", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, PostDetailActivity.class);
+                intent.putExtra("postId", pId);
+                context.startActivity(intent);
             }
         });
         holder.sharebtn.setOnClickListener(new View.OnClickListener() {
@@ -197,7 +200,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder>{
     class MyHolder extends RecyclerView.ViewHolder{
 
         ImageView uPictureIv, pImageIv;
-        TextView uNameTv, pTimeTv, pDescriptionTv, pLikesTv, pTitleTv;
+        TextView uNameTv, pTimeTv, pDescriptionTv, pLikesTv, pTitleTv, pCommentsTv;
         ImageButton moreBtn;
         Button likebtn, commentbtn, sharebtn;
         LinearLayout profileLayut;
@@ -216,6 +219,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder>{
             sharebtn = itemView.findViewById(R.id.share_feed);
             pTitleTv = itemView.findViewById(R.id.title_feed);
             profileLayut = itemView.findViewById(R.id.profile_layout);
+            pCommentsTv = itemView.findViewById(R.id.comment_count);
 
         }
     }
