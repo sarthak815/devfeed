@@ -30,16 +30,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:src="@drawable/profile_pic">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <androidx.slidingpanelayout.widget.SlidingPaneLayout
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"/>
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="10dp"
+                    android:background="@drawable/baseline_perm_identity_black_18dp"
+                    app:civ_border_color="@color/dark"
+                    app:civ_border_width="50dp"
+                    />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-
-
+                <com.google.android.material.textview.MaterialTextView
+                    Color="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/text_border"
+                    android:hint="Tell everyone what you worked on today "
+                    android:textColorHint="@color/white"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:textAlignment="center"
+                    android:gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
-
 
     </ScrollView>
 
