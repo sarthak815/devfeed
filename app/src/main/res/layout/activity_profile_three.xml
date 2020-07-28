@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light"
-    tools:context=".ProfileFragment">
+    tools:context=".profile_activity_three">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,15 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#A600203F">
-        <TextView
-            android:text="DevFeed"
-            android:fontFamily="@font/dreamwood"
-            android:paddingTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:textAppearance="@style/devfeed_title"
-            android:gravity="center_horizontal|bottom"
-            />
+            <TextView
+                android:text="DevFeed"
+                android:fontFamily="@font/dreamwood"
+                android:paddingTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:textAppearance="@style/devfeed_title"
+                android:gravity="center_horizontal|bottom"
+                />
         </RelativeLayout>
         <RelativeLayout
             android:layout_marginTop="100dp"
@@ -91,22 +89,12 @@
             </LinearLayout>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mypost_recycler"
+            android:id="@+id/redirect_profile_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/linear_layout"/>
     </RelativeLayout>
 
-    </ScrollView>
+</ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_action_name"
-        android:layout_margin="10dp"/>
 
-</RelativeLayout>

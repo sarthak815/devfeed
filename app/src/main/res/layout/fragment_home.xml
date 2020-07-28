@@ -3,14 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light"
     tools:context=".HomeFragment">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="Home" />
+        android:orientation="vertical">
+        <TextView
+            android:text="DevFeed"
+            android:fontFamily="@font/dreamwood"
+            android:paddingTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/dark"
+            android:textAppearance="@style/devfeed_title"
+            android:gravity="center"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postsRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

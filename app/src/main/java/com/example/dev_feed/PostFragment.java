@@ -86,22 +86,6 @@ public class PostFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private void checkUserStatus(){
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
-        if(user != null){
-            email = user.getEmail();
-            uid = user.getUid();
-
-
-        }
-
-        else{
-            startActivity(new Intent(getActivity(), MainActivity.class));
-
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -281,6 +265,22 @@ public class PostFragment extends Fragment {
                         }
                     });
 
+        }
+    }
+    private void checkUserStatus(){
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if(user != null){
+
+            uid = user.getUid();
+
+
+        }
+
+        else{
+            startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().finish();
         }
     }
 

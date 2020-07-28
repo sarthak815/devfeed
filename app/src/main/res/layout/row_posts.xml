@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/dark">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/dp_feed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/person"
+            android:background="@color/dark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_feed"
+                android:textSize="20sp"
+                android:textColor="@color/light"/>
+            <TextView
+                android:id="@+id/time_stamp_feed"
+                android:layout_width="wrap_content"
+                android:textColor="@color/light"
+                android:layout_height="wrap_content"
+                android:text="33min"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/more_options_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/more_options"/>
+
+
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:autoLink="all"
+            android:id="@+id/title_feed"/>
+        <TextView
+            android:textColor="@color/light"
+            android:layout_width="match_parent"
+            android:autoLink="all"
+            android:layout_height="wrap_content"
+            android:id="@+id/description_feed"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/pic_feed"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/likes_feed"
+            android:textColor="@color/dark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/like_button_feed"
+                android:text="Like"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/comments_button_feed"
+                android:text="comment"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/share_feed"
+                android:text="Share"/>
+
+        </LinearLayout>
+        
+        
+            
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
