@@ -132,29 +132,8 @@ public class PostFragment extends Fragment {
             }
         });
 
-        uploadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String title = titleEt.getText().toString().trim();
-                String description = descriptionEt.getText().toString().trim();
-                if(TextUtils.isEmpty(title)){
-                    Toast.makeText(getActivity(), "Enter title..", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(description)){
-                    Toast.makeText(getActivity(), "Enter description..", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(image_rui==null){
-                    uploadData(title, description, "noImage");
-                }
-                else{
-                    uploadData(title, description, String.valueOf(image_rui));
-                }
 
-            }
-        });
-        // Inflate the layout for this fragment
+
         return v;
     }
 
