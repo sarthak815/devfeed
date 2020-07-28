@@ -1,4 +1,5 @@
 # devfeed
+
 A miroblogging site for developers
 
 We came up with the idea of building dev feed after we realised that there was no such platform we as developers could share our achievements and projects. The interaction with other developers and programmers make it easier for coders to know about the latest technologies and share ideas. 
@@ -8,4 +9,5 @@ We used FIGMA to make the UI of the app that made it easier for us to build the 
 
 
 Download the apk from Downloadable_Apk
+
 
