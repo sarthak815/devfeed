@@ -1,4 +1,4 @@
-# devfeed
+# DevFeed
 
 A miroblogging site for developers
 
